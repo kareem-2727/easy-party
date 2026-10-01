@@ -1,0 +1,578 @@
+export default [
+  {
+    "id": "av01",
+    "type": "avatar",
+    "nameAr": "أفاتار 1",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "😎",
+    "levelRequired": 1
+  },
+  {
+    "id": "av02",
+    "type": "avatar",
+    "nameAr": "أفاتار 2",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🤩",
+    "levelRequired": 1
+  },
+  {
+    "id": "av03",
+    "type": "avatar",
+    "nameAr": "أفاتار 3",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🥳",
+    "levelRequired": 1
+  },
+  {
+    "id": "av04",
+    "type": "avatar",
+    "nameAr": "أفاتار 4",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🤖",
+    "levelRequired": 1
+  },
+  {
+    "id": "av05",
+    "type": "avatar",
+    "nameAr": "أفاتار 5",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "👑",
+    "levelRequired": 1
+  },
+  {
+    "id": "av06",
+    "type": "avatar",
+    "nameAr": "أفاتار 6",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🐼",
+    "levelRequired": 1
+  },
+  {
+    "id": "av07",
+    "type": "avatar",
+    "nameAr": "أفاتار 7",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🦊",
+    "levelRequired": 1
+  },
+  {
+    "id": "av08",
+    "type": "avatar",
+    "nameAr": "أفاتار 8",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🐯",
+    "levelRequired": 1
+  },
+  {
+    "id": "av09",
+    "type": "avatar",
+    "nameAr": "أفاتار 9",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🐸",
+    "levelRequired": 1
+  },
+  {
+    "id": "av10",
+    "type": "avatar",
+    "nameAr": "أفاتار 10",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🦄",
+    "levelRequired": 1
+  },
+  {
+    "id": "av11",
+    "type": "avatar",
+    "nameAr": "أفاتار 11",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "😎",
+    "levelRequired": 1
+  },
+  {
+    "id": "av12",
+    "type": "avatar",
+    "nameAr": "أفاتار 12",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🤩",
+    "levelRequired": 1
+  },
+  {
+    "id": "av13",
+    "type": "avatar",
+    "nameAr": "أفاتار 13",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🥳",
+    "levelRequired": 1
+  },
+  {
+    "id": "av14",
+    "type": "avatar",
+    "nameAr": "أفاتار 14",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🤖",
+    "levelRequired": 1
+  },
+  {
+    "id": "av15",
+    "type": "avatar",
+    "nameAr": "أفاتار 15",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "👑",
+    "levelRequired": 1
+  },
+  {
+    "id": "av16",
+    "type": "avatar",
+    "nameAr": "أفاتار 16",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🐼",
+    "levelRequired": 1
+  },
+  {
+    "id": "av17",
+    "type": "avatar",
+    "nameAr": "أفاتار 17",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🦊",
+    "levelRequired": 1
+  },
+  {
+    "id": "av18",
+    "type": "avatar",
+    "nameAr": "أفاتار 18",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🐯",
+    "levelRequired": 1
+  },
+  {
+    "id": "av19",
+    "type": "avatar",
+    "nameAr": "أفاتار 19",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🐸",
+    "levelRequired": 1
+  },
+  {
+    "id": "av20",
+    "type": "avatar",
+    "nameAr": "أفاتار 20",
+    "price": 50,
+    "currency": "coins",
+    "rarity": "common",
+    "icon": "🦄",
+    "levelRequired": 1
+  },
+  {
+    "id": "av21",
+    "type": "avatar",
+    "nameAr": "أفاتار 21",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "😎",
+    "levelRequired": 1
+  },
+  {
+    "id": "av22",
+    "type": "avatar",
+    "nameAr": "أفاتار 22",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🤩",
+    "levelRequired": 1
+  },
+  {
+    "id": "av23",
+    "type": "avatar",
+    "nameAr": "أفاتار 23",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🥳",
+    "levelRequired": 1
+  },
+  {
+    "id": "av24",
+    "type": "avatar",
+    "nameAr": "أفاتار 24",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🤖",
+    "levelRequired": 1
+  },
+  {
+    "id": "av25",
+    "type": "avatar",
+    "nameAr": "أفاتار 25",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "👑",
+    "levelRequired": 1
+  },
+  {
+    "id": "av26",
+    "type": "avatar",
+    "nameAr": "أفاتار 26",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🐼",
+    "levelRequired": 1
+  },
+  {
+    "id": "av27",
+    "type": "avatar",
+    "nameAr": "أفاتار 27",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🦊",
+    "levelRequired": 1
+  },
+  {
+    "id": "av28",
+    "type": "avatar",
+    "nameAr": "أفاتار 28",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🐯",
+    "levelRequired": 1
+  },
+  {
+    "id": "av29",
+    "type": "avatar",
+    "nameAr": "أفاتار 29",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🐸",
+    "levelRequired": 1
+  },
+  {
+    "id": "av30",
+    "type": "avatar",
+    "nameAr": "أفاتار 30",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🦄",
+    "levelRequired": 1
+  },
+  {
+    "id": "theme0",
+    "type": "theme",
+    "nameAr": "neon",
+    "price": 0,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🎨",
+    "levelRequired": 1
+  },
+  {
+    "id": "theme1",
+    "type": "theme",
+    "nameAr": "sunset",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🎨",
+    "levelRequired": 1
+  },
+  {
+    "id": "theme2",
+    "type": "theme",
+    "nameAr": "forest",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🎨",
+    "levelRequired": 1
+  },
+  {
+    "id": "theme3",
+    "type": "theme",
+    "nameAr": "space",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🎨",
+    "levelRequired": 1
+  },
+  {
+    "id": "theme4",
+    "type": "theme",
+    "nameAr": "royal",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🎨",
+    "levelRequired": 1
+  },
+  {
+    "id": "frame0",
+    "type": "frame",
+    "nameAr": "دوار",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "✨",
+    "levelRequired": 1
+  },
+  {
+    "id": "frame1",
+    "type": "frame",
+    "nameAr": "نار",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "✨",
+    "levelRequired": 1
+  },
+  {
+    "id": "frame2",
+    "type": "frame",
+    "nameAr": "برق",
+    "price": 150,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "✨",
+    "levelRequired": 1
+  },
+  {
+    "id": "effect0",
+    "type": "effect",
+    "nameAr": "قصاصات",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "🎊",
+    "levelRequired": 1
+  },
+  {
+    "id": "effect1",
+    "type": "effect",
+    "nameAr": "ألعاب نارية",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "🎊",
+    "levelRequired": 1
+  },
+  {
+    "id": "effect2",
+    "type": "effect",
+    "nameAr": "مطر عملات",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "🎊",
+    "levelRequired": 1
+  },
+  {
+    "id": "podium0",
+    "type": "podium",
+    "nameAr": "ذهبية",
+    "price": 250,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "🏆",
+    "levelRequired": 1
+  },
+  {
+    "id": "podium1",
+    "type": "podium",
+    "nameAr": "كريستال",
+    "price": 250,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "🏆",
+    "levelRequired": 1
+  },
+  {
+    "id": "podium2",
+    "type": "podium",
+    "nameAr": "نيون",
+    "price": 250,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "🏆",
+    "levelRequired": 1
+  },
+  {
+    "id": "sound0",
+    "type": "sound",
+    "nameAr": "حزمة Retro",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🔊",
+    "levelRequired": 1
+  },
+  {
+    "id": "sound1",
+    "type": "sound",
+    "nameAr": "حزمة Arcade",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🔊",
+    "levelRequired": 1
+  },
+  {
+    "id": "sound2",
+    "type": "sound",
+    "nameAr": "حزمة Soft",
+    "price": 120,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "🔊",
+    "levelRequired": 1
+  },
+  {
+    "id": "boost0",
+    "type": "booster",
+    "nameAr": "مضاعف العملات ×2",
+    "price": 100,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "⚡",
+    "levelRequired": 1,
+    "booster": "coinX2Matches",
+    "amount": 3
+  },
+  {
+    "id": "boost1",
+    "type": "booster",
+    "nameAr": "تخطي سؤال ×3",
+    "price": 40,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "⚡",
+    "levelRequired": 1,
+    "booster": "skips",
+    "amount": 3
+  },
+  {
+    "id": "boost2",
+    "type": "booster",
+    "nameAr": "تلميح جاسوس",
+    "price": 30,
+    "currency": "coins",
+    "rarity": "epic",
+    "icon": "⚡",
+    "levelRequired": 1,
+    "booster": "spyHints",
+    "amount": 1
+  },
+  {
+    "id": "pack0",
+    "type": "pack",
+    "nameAr": "حزمة كلمات طبيعة",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  },
+  {
+    "id": "pack1",
+    "type": "pack",
+    "nameAr": "حزمة كلمات رياضة",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  },
+  {
+    "id": "pack2",
+    "type": "pack",
+    "nameAr": "حزمة كلمات أفلام",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  },
+  {
+    "id": "pack3",
+    "type": "pack",
+    "nameAr": "حزمة كلمات تقنية",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  },
+  {
+    "id": "pack4",
+    "type": "pack",
+    "nameAr": "حزمة كلمات مناسبات",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  },
+  {
+    "id": "pack5",
+    "type": "pack",
+    "nameAr": "حزمة كلمات أكلات",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  },
+  {
+    "id": "pack6",
+    "type": "pack",
+    "nameAr": "حزمة كلمات أماكن",
+    "price": 200,
+    "currency": "coins",
+    "rarity": "rare",
+    "icon": "📦",
+    "levelRequired": 1
+  }
+];

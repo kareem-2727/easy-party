@@ -1,0 +1,302 @@
+export default [
+  {
+    "id": "a01",
+    "nameAr": "أول فوز 1",
+    "descAr": "حقق 1 في الإحصائية المطلوبة",
+    "stat": "wins",
+    "target": 1,
+    "coins": 25,
+    "gems": 1,
+    "badge": "🏆"
+  },
+  {
+    "id": "a02",
+    "nameAr": "مدمن حفلات 2",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "matches",
+    "target": 10,
+    "coins": 35,
+    "gems": 0,
+    "badge": "🎉"
+  },
+  {
+    "id": "a03",
+    "nameAr": "جاسوس لا يقهر 3",
+    "descAr": "حقق 5 في الإحصائية المطلوبة",
+    "stat": "spyWins",
+    "target": 5,
+    "coins": 45,
+    "gems": 0,
+    "badge": "🕵️"
+  },
+  {
+    "id": "a04",
+    "nameAr": "بطل المصغرات 4",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "miniWins",
+    "target": 10,
+    "coins": 55,
+    "gems": 0,
+    "badge": "🎮"
+  },
+  {
+    "id": "a05",
+    "nameAr": "بطل 5 ثواني 5",
+    "descAr": "حقق 20 في الإحصائية المطلوبة",
+    "stat": "correct5s",
+    "target": 20,
+    "coins": 25,
+    "gems": 0,
+    "badge": "⚡"
+  },
+  {
+    "id": "a06",
+    "nameAr": "أول فوز 6",
+    "descAr": "حقق 1 في الإحصائية المطلوبة",
+    "stat": "wins",
+    "target": 1,
+    "coins": 35,
+    "gems": 0,
+    "badge": "🏆"
+  },
+  {
+    "id": "a07",
+    "nameAr": "مدمن حفلات 7",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "matches",
+    "target": 10,
+    "coins": 45,
+    "gems": 0,
+    "badge": "🎉"
+  },
+  {
+    "id": "a08",
+    "nameAr": "جاسوس لا يقهر 8",
+    "descAr": "حقق 5 في الإحصائية المطلوبة",
+    "stat": "spyWins",
+    "target": 5,
+    "coins": 55,
+    "gems": 0,
+    "badge": "🕵️"
+  },
+  {
+    "id": "a09",
+    "nameAr": "بطل المصغرات 9",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "miniWins",
+    "target": 10,
+    "coins": 25,
+    "gems": 0,
+    "badge": "🎮"
+  },
+  {
+    "id": "a10",
+    "nameAr": "بطل 5 ثواني 10",
+    "descAr": "حقق 20 في الإحصائية المطلوبة",
+    "stat": "correct5s",
+    "target": 20,
+    "coins": 35,
+    "gems": 0,
+    "badge": "⚡"
+  },
+  {
+    "id": "a11",
+    "nameAr": "أول فوز 11",
+    "descAr": "حقق 1 في الإحصائية المطلوبة",
+    "stat": "wins",
+    "target": 1,
+    "coins": 45,
+    "gems": 1,
+    "badge": "🏆"
+  },
+  {
+    "id": "a12",
+    "nameAr": "مدمن حفلات 12",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "matches",
+    "target": 10,
+    "coins": 55,
+    "gems": 0,
+    "badge": "🎉"
+  },
+  {
+    "id": "a13",
+    "nameAr": "جاسوس لا يقهر 13",
+    "descAr": "حقق 5 في الإحصائية المطلوبة",
+    "stat": "spyWins",
+    "target": 5,
+    "coins": 25,
+    "gems": 0,
+    "badge": "🕵️"
+  },
+  {
+    "id": "a14",
+    "nameAr": "بطل المصغرات 14",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "miniWins",
+    "target": 10,
+    "coins": 35,
+    "gems": 0,
+    "badge": "🎮"
+  },
+  {
+    "id": "a15",
+    "nameAr": "بطل 5 ثواني 15",
+    "descAr": "حقق 20 في الإحصائية المطلوبة",
+    "stat": "correct5s",
+    "target": 20,
+    "coins": 45,
+    "gems": 0,
+    "badge": "⚡"
+  },
+  {
+    "id": "a16",
+    "nameAr": "أول فوز 16",
+    "descAr": "حقق 1 في الإحصائية المطلوبة",
+    "stat": "wins",
+    "target": 1,
+    "coins": 55,
+    "gems": 0,
+    "badge": "🏆"
+  },
+  {
+    "id": "a17",
+    "nameAr": "مدمن حفلات 17",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "matches",
+    "target": 10,
+    "coins": 25,
+    "gems": 0,
+    "badge": "🎉"
+  },
+  {
+    "id": "a18",
+    "nameAr": "جاسوس لا يقهر 18",
+    "descAr": "حقق 5 في الإحصائية المطلوبة",
+    "stat": "spyWins",
+    "target": 5,
+    "coins": 35,
+    "gems": 0,
+    "badge": "🕵️"
+  },
+  {
+    "id": "a19",
+    "nameAr": "بطل المصغرات 19",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "miniWins",
+    "target": 10,
+    "coins": 45,
+    "gems": 0,
+    "badge": "🎮"
+  },
+  {
+    "id": "a20",
+    "nameAr": "بطل 5 ثواني 20",
+    "descAr": "حقق 20 في الإحصائية المطلوبة",
+    "stat": "correct5s",
+    "target": 20,
+    "coins": 55,
+    "gems": 0,
+    "badge": "⚡"
+  },
+  {
+    "id": "a21",
+    "nameAr": "أول فوز 21",
+    "descAr": "حقق 1 في الإحصائية المطلوبة",
+    "stat": "wins",
+    "target": 1,
+    "coins": 25,
+    "gems": 1,
+    "badge": "🏆"
+  },
+  {
+    "id": "a22",
+    "nameAr": "مدمن حفلات 22",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "matches",
+    "target": 10,
+    "coins": 35,
+    "gems": 0,
+    "badge": "🎉"
+  },
+  {
+    "id": "a23",
+    "nameAr": "جاسوس لا يقهر 23",
+    "descAr": "حقق 5 في الإحصائية المطلوبة",
+    "stat": "spyWins",
+    "target": 5,
+    "coins": 45,
+    "gems": 0,
+    "badge": "🕵️"
+  },
+  {
+    "id": "a24",
+    "nameAr": "بطل المصغرات 24",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "miniWins",
+    "target": 10,
+    "coins": 55,
+    "gems": 0,
+    "badge": "🎮"
+  },
+  {
+    "id": "a25",
+    "nameAr": "بطل 5 ثواني 25",
+    "descAr": "حقق 20 في الإحصائية المطلوبة",
+    "stat": "correct5s",
+    "target": 20,
+    "coins": 25,
+    "gems": 0,
+    "badge": "⚡"
+  },
+  {
+    "id": "a26",
+    "nameAr": "أول فوز 26",
+    "descAr": "حقق 1 في الإحصائية المطلوبة",
+    "stat": "wins",
+    "target": 1,
+    "coins": 35,
+    "gems": 0,
+    "badge": "🏆"
+  },
+  {
+    "id": "a27",
+    "nameAr": "مدمن حفلات 27",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "matches",
+    "target": 10,
+    "coins": 45,
+    "gems": 0,
+    "badge": "🎉"
+  },
+  {
+    "id": "a28",
+    "nameAr": "جاسوس لا يقهر 28",
+    "descAr": "حقق 5 في الإحصائية المطلوبة",
+    "stat": "spyWins",
+    "target": 5,
+    "coins": 55,
+    "gems": 0,
+    "badge": "🕵️"
+  },
+  {
+    "id": "a29",
+    "nameAr": "بطل المصغرات 29",
+    "descAr": "حقق 10 في الإحصائية المطلوبة",
+    "stat": "miniWins",
+    "target": 10,
+    "coins": 25,
+    "gems": 0,
+    "badge": "🎮"
+  },
+  {
+    "id": "a30",
+    "nameAr": "بطل 5 ثواني 30",
+    "descAr": "حقق 20 في الإحصائية المطلوبة",
+    "stat": "correct5s",
+    "target": 20,
+    "coins": 35,
+    "gems": 0,
+    "badge": "⚡"
+  }
+];
