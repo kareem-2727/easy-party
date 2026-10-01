@@ -1,1 +1,1 @@
-export const fiveSecModes=Array.from({length:10},(_,i)=>({id:`five${i+1}`,nameAr:["اذكر خمسة","حرف سريع","نعم أو لا","أكمل الجملة","تصنيف","مقارنة","عد تنازلي","ذاكرة","اختيار","وصف"][i]}));
+export const fiveSecModes=[{id:"three",nameAr:"اذكر ثلاثة"},{id:"truth",nameAr:"صح أم خطأ"},{id:"complete",nameAr:"أكمل بسرعة"},{id:"odd",nameAr:"ما المختلف؟"},{id:"category",nameAr:"من الفئة"},{id:"closest",nameAr:"الأقرب"},{id:"letter",nameAr:"كلمة بحرف"},{id:"compare",nameAr:"قارن"},{id:"number",nameAr:"توقع الرقم"},{id:"describe",nameAr:"وصف سريع"}];
