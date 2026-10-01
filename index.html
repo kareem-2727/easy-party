@@ -2,36 +2,97 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#0B0F19">
 <meta name="description" content="Easy Party — ألعاب حفلات سريعة وممتعة">
-<link rel="manifest" href="./manifest.json?v=8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./assets/icons/icon-192.png">
+<link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/theme.css?v=8">
-<link rel="stylesheet" href="./css/components.css?v=8">
-<link rel="stylesheet" href="./css/screens.css?v=8">
+<link rel="stylesheet" href="./css/theme.css?v=9">
+<link rel="stylesheet" href="./css/components.css?v=9">
+<link rel="stylesheet" href="./css/screens.css?v=9">
 <title>Easy Party</title>
 </head>
 <body>
 <div id="hud"></div>
-<main id="app"><section class="screen fade-in"><div class="hero"><div class="logo">EASY <span>PARTY</span></div><p class="subtitle">جاري تشغيل اللعبة…</p></div></section></main>
+<main id="app">
+  <section class="screen fade-in" id="boot">
+    <div class="hero">
+      <div class="logo">EASY <span>PARTY</span></div>
+      <p class="subtitle" id="bootMsg">جاري تشغيل اللعبة…</p>
+    </div>
+  </section>
+</main>
+<noscript><p style="color:#fff;text-align:center;padding:24px">فعّل جافاسكربت لتشغيل اللعبة.</p></noscript>
 <script>
-(async function(){
-  try{
-    if('serviceWorker' in navigator){
-      const regs=await navigator.serviceWorker.getRegistrations();
-      await Promise.all(regs.map(r=>r.unregister()));
-    }
-    if('caches' in window){
-      const keys=await caches.keys();
-      await Promise.all(keys.filter(k=>k.startsWith('easy-party-')).map(k=>caches.delete(k)));
-    }
-  }catch(e){console.warn('PWA cleanup skipped',e)}
-  window.__easyPartyReady=import('./js/main.js?v=8');
-  try{await window.__easyPartyReady}catch(e){console.error(e)}
+(function () {
+  function showFail(msg) {
+    var app = document.getElementById("app");
+    if (!app) return;
+    app.innerHTML =
+      '<section class="screen"><div class="hero" style="text-align:center;padding:24px">' +
+      '<h2 style="color:#fff">تعذّر تشغيل اللعبة</h2>' +
+      '<pre id="bootErr" style="direction:ltr;text-align:left;white-space:pre-wrap;color:#FF8A8A;' +
+      'background:rgba(255,255,255,.06);padding:12px;border-radius:14px;max-height:40vh;overflow:auto;font-size:12px"></pre>' +
+      '<button id="bootFix" style="margin-top:16px;padding:14px 24px;border:0;border-radius:16px;font:700 16px Tajawal,system-ui;' +
+      'background:#00F0FF;color:#0B0F19">إصلاح وإعادة المحاولة</button></div></section>';
+    document.getElementById("bootErr").textContent = msg;
+    document.getElementById("bootFix").onclick = async function () {
+      try {
+        var regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(function (r) { return r.unregister(); }));
+        var keys = await caches.keys();
+        await Promise.all(keys.map(function (k) { return caches.delete(k); }));
+      } catch (e) {}
+      location.reload();
+    };
+  }
+  window.__bootDone = false;
+  window.addEventListener("error", function (e) {
+    if (!window.__bootDone) showFail(e.message + "
+" + (e.filename || "") + ":" + (e.lineno || ""));
+  });
+  window.addEventListener("unhandledrejection", function (e) {
+    if (!window.__bootDone) showFail(String((e.reason && (e.reason.stack || e.reason.message)) || e.reason));
+  });
+  window.__showBootFail = showFail;
+})();
+
+(async function () {
+  var watchdog = setTimeout(function () {
+    if (!window.__bootDone) window.__showBootFail("Timeout: main.js did not finish loading in 8 seconds.
+Check Network tab for a 404 on a .js file.");
+  }, 8000);
+  try {
+    await import("./js/main.js?v=9");
+    window.__bootDone = true;
+    clearTimeout(watchdog);
+  } catch (e) {
+    clearTimeout(watchdog);
+    console.error(e);
+    window.__showBootFail(String(e && (e.stack || e.message) || e));
+    return;
+  }
+  if ("serviceWorker" in navigator) {
+    try {
+      var reg = await navigator.serviceWorker.register("./sw.js");
+      reg.addEventListener("updatefound", function () {
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener("statechange", function () {
+          if (nw.state === "installed" && navigator.serviceWorker.controller) {
+            console.info("Easy Party: new version installed");
+          }
+        });
+      });
+    } catch (e) { console.warn("SW registration skipped", e); }
+  }
 })();
 </script>
 </body>

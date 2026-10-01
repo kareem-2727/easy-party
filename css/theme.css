@@ -1,2 +1,19 @@
 :root{--bg-1:#0B0F19;--bg-2:#161F33;--p1:#00F0FF;--p2:#FF007F;--p3:#FFD700;--p4:#00FF66;--glass:rgba(255,255,255,.08);--glass-border:rgba(255,255,255,.18);--radius:18px;--text:#fff;--text-dim:#A0AEC0;--coin:#FFC93C;--gem:#B388FF;--danger:#FF4D4D;--ok:#2EE59D}*{box-sizing:border-box}html{min-height:100%;background:var(--bg-1)}body{margin:0;min-height:100dvh;color:var(--text);background:linear-gradient(160deg,var(--bg-1),var(--bg-2));font-family:"Tajawal","Cairo",system-ui,sans-serif;direction:rtl;-webkit-tap-highlight-color:transparent;user-select:none;touch-action:manipulation}button,input,select,textarea{font:inherit}button{cursor:pointer}.glass{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);backdrop-filter:blur(14px)}.glow{box-shadow:0 0 12px currentColor,0 0 32px color-mix(in srgb,currentColor 45%,transparent)}.rot180{transform:rotate(180deg)}.hidden{display:none!important}.fade-in{animation:fadeIn .28s ease both}.pop{animation:pop .35s ease both}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes pop{0%{transform:scale(.92)}100%{transform:scale(1)}}@keyframes pulse{50%{transform:scale(1.03);box-shadow:0 0 28px rgba(0,240,255,.28)}}
 body.high-contrast{--glass:rgba(255,255,255,.14);--glass-border:rgba(255,255,255,.38);--text-dim:#dbe7f5}body.large-text{font-size:18px}
+
+
+/* Mobile game safety and touch rules */
+html, body {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  overscroll-behavior: none;
+  font-family: "Tajawal", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.screen { min-height: 100vh; min-height: 100dvh; }
+body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right)
+           env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.zone, .big-btn { touch-action: none; }

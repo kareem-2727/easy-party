@@ -1,7 +1,10 @@
 {
+  "id": "./",
   "name": "Easy Party",
   "short_name": "Easy Party",
+  "description": "ألعاب حفلات عربية: جاسوس، تحدي 5 ثواني، و30 لعبة مصغرة",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "dir": "rtl",
@@ -9,15 +12,8 @@
   "background_color": "#0B0F19",
   "theme_color": "#0B0F19",
   "icons": [
-    {
-      "src": "./assets/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "./assets/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
+    { "src": "./assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
   ]
 }
