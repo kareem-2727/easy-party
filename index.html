@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0B0F19">
 <meta name="description" content="Easy Party — ألعاب حفلات سريعة وممتعة">
-<link rel="manifest" href="./manifest.json">
+<link rel="manifest" href="./manifest.json?v=6">
 <link rel="icon" href="./assets/icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./css/theme.css">
-<link rel="stylesheet" href="./css/components.css">
-<link rel="stylesheet" href="./css/screens.css">
+<link rel="stylesheet" href="./css/theme.css?v=6">
+<link rel="stylesheet" href="./css/components.css?v=6">
+<link rel="stylesheet" href="./css/screens.css?v=6">
 <title>Easy Party</title>
 </head>
 <body>
@@ -36,15 +36,19 @@
 </main>
 <script>
 (function(){
-  function go(name){ window.__easyPartyRoute=name; document.dispatchEvent(new CustomEvent('easy-party-route',{detail:name})); }
+  function go(name){
+    window.__easyPartyRoute=name;
+    document.dispatchEvent(new CustomEvent('easy-party-route',{detail:name}));
+  }
   document.getElementById('quick-start').onclick=function(){go('lobby')};
   document.getElementById('quick-profile').onclick=function(){go('profile')};
   document.getElementById('quick-shop').onclick=function(){go('shop')};
   document.getElementById('quick-daily').onclick=function(){go('daily')};
   document.getElementById('quick-settings').onclick=function(){go('settings')};
-  window.addEventListener('error',function(e){console.error('Easy Party startup error',e.error||e.message)});
+  window.addEventListener('error',function(e){console.error('Easy Party error',e.error||e.message)});
+  window.addEventListener('unhandledrejection',function(e){console.error('Easy Party promise error',e.reason)});
 })();
 </script>
-<script type="module" src="./js/main.js?v=5"></script>
+<script type="module" src="./js/main.js?v=6"></script>
 </body>
 </html>
