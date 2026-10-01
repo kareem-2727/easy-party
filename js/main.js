@@ -2,121 +2,28 @@ const app=document.querySelector('#app');
 const hud=document.querySelector('#hud');
 let bootPromise=null;
 let dataReady=Promise.resolve();
-
-function renderInstantHome(){
-  if(!app)return;
-  app.innerHTML=`<section class="screen fade-in"><div class="hero"><div class="logo">EASY <span>PARTY</span></div><p class="subtitle">حفلة واحدة. عشرات التحديات. جهاز واحد.</p></div><div class="home-actions"><button class="btn primary big-btn" id="fallback-start">🎉 بدء اللعب الجماعي</button><div class="mini-actions"><button class="btn" id="fallback-profile">👤 الملف الشخصي</button><button class="btn" id="fallback-shop">🛒 المتجر</button><button class="btn" id="fallback-daily">🎁 المكافأة اليومية</button><button class="btn" id="fallback-settings">⚙️ الإعدادات</button></div></div></section>`;
+const HOME_HTML=`<section class="screen fade-in"><div class="hero"><div class="logo">EASY <span>PARTY</span></div><p class="subtitle">حفلة واحدة. عشرات التحديات. جهاز واحد.</p></div><div class="home-actions"><button class="btn primary big-btn" id="full">🎉 بدء اللعب الجماعي</button><div class="mini-actions"><button class="btn" id="tour">🏆 بطولة</button><button class="btn" id="train">🎯 تدريب</button><button class="btn" id="library">🃏 مكتبة الكروت</button><button class="btn" id="spy">🕵️ برا السالفة</button><button class="btn" id="five">⏱️ تحدي 5 ثواني</button></div></div><div class="grid" style="grid-template-columns:repeat(2,1fr)"><button class="btn" id="profile">👤 الملف الشخصي</button><button class="btn" id="shop">🛒 المتجر</button><button class="btn" id="daily">🎁 المكافأة اليومية</button><button class="btn" id="settings">⚙️ الإعدادات</button></div></section>`;
+function renderHomeShell(){if(app)app.innerHTML=HOME_HTML}
+function showError(title='تعذر فتح الشاشة',message='حدث خطأ غير متوقع. جرّب مرة أخرى.'){
+ if(!app)return;
+ app.innerHTML=`<section class="screen fade-in"><div class="hero"><div class="logo">EASY <span>PARTY</span></div><h2>${title}</h2><p class="muted">${message}</p><div class="row"><button class="btn primary" id="retry">إعادة المحاولة</button><button class="btn" id="home-now">الرئيسية</button></div></div></section>`;
+ app.querySelector('#retry')?.addEventListener('click',()=>location.reload());app.querySelector('#home-now')?.addEventListener('click',()=>goSafe('home'));
 }
-
-function showBootError(error){
-  console.error('Easy Party boot error',error);
-  if(!app)return;
-  app.innerHTML=`<section class="screen fade-in"><div class="hero"><div class="logo">EASY <span>PARTY</span></div><h2>تعذر تشغيل اللعبة</h2><p class="muted">تم تحديث اللعبة. اضغط إعادة المحاولة.</p><button class="btn primary big-btn" id="retry">إعادة المحاولة</button></div></section>`;
-  app.querySelector('#retry')?.addEventListener('click',()=>location.reload());
-}
-
-function showRouteError(error,go,name,payload){
-  console.error(`Easy Party route error: ${name}`,error);
-  if(!app)return;
-  app.innerHTML=`<section class="screen fade-in"><div class="hero"><div class="logo">EASY <span>PARTY</span></div><h2>تعذر فتح اللعبة</h2><p class="muted">حدث خطأ أثناء فتح شاشة ${name}. يمكنك المحاولة مرة أخرى.</p><div class="row"><button class="btn primary" id="retry-route">إعادة المحاولة</button><button class="btn" id="home-route">الرئيسية</button></div></div></section>`;
-  app.querySelector('#retry-route')?.addEventListener('click',()=>safeNavigate(go,name,payload));
-  app.querySelector('#home-route')?.addEventListener('click',()=>safeNavigate(go,'home'));
-}
-
-function safeNavigate(go,name,payload){
-  Promise.resolve(go(name,payload)).catch(error=>showRouteError(error,go,name,payload));
-}
-
-async function loadDataInBackground(state){
-  const get=async path=>{
-    try{
-      const r=await fetch(path,{cache:'no-store'});
-      if(!r.ok)throw new Error(`${path}: ${r.status}`);
-      return await r.json();
-    }catch(error){
-      console.warn('Easy Party data load failed',path,error);
-      return null;
-    }
-  };
-  const [words,questions,shop,achievements]=await Promise.all([
-    get('./data/words.json?v=7'),
-    get('./data/fiveSecQuestions.json?v=7'),
-    get('./data/shopItems.json?v=7'),
-    get('./data/achievements.json?v=7')
-  ]);
-  if(words)state.assets.words=words;
-  if(questions)state.assets.questions=questions;
-  if(shop)state.assets.shop=shop;
-  if(achievements)state.assets.achievements=achievements;
-}
-
+const router={go:null};
+function goSafe(name,payload){return bootPromise?.then(()=>router.go(name,payload)).catch(e=>{console.error(name,e);showError('تعذر فتح الشاشة',`لم نتمكن من فتح: ${name}`)})}
 async function startGame(){
-  if(bootPromise)return bootPromise;
-  bootPromise=(async()=>{
-    try{
-      // IMPORTANT: keep canonical module URLs. Adding ?v=7 to these imports would
-      // create separate ES-module instances and duplicate the router state.
-      const [stateMod,routerMod,audioMod,hapticsMod]=await Promise.all([
-        import('./core/state.js'),
-        import('./core/router.js'),
-        import('./core/audio.js'),
-        import('./core/haptics.js')
-      ]);
-      const {state,initState}=stateMod;
-      const {register,go,onNavigate}=routerMod;
-      const {sfx}=audioMod;
-      const {haptics}=hapticsMod;
-      const ctx={root:app,state,sfx,haptics};
-
-      function updateHud(){
-        if(!hud)return;
-        const p=state.players?.[0];
-        if(!p){hud.innerHTML='';return;}
-        hud.innerHTML=`<div class="topbar"><div class="wallet"><span class="pill">🪙 ${p.coins}</span><span class="pill">💎 ${p.gems}</span><span class="pill">⭐ ${p.level}</span></div><div class="row"><button class="icon-btn" id="sound">${state.data.settings.sound?'🔊':'🔇'}</button><button class="icon-btn" id="gear">⚙️</button></div></div>`;
-        hud.querySelector('#gear')?.addEventListener('click',()=>safeNavigate(go,'settings'));
-        hud.querySelector('#sound')?.addEventListener('click',()=>{state.data.settings.sound=!state.data.settings.sound;stateMod.persist();updateHud()});
-      }
-
-      initState();
-      state.data.settings=state.data.settings||{};
-      onNavigate(updateHud);
-
-      register('home',async()=>{const m=await import('./screens/home.js');return m.home(ctx)});
-      register('lobby',async payload=>{await dataReady;const m=await import('./screens/lobby.js');return m.lobby(ctx,payload)});
-      register('profile',async()=>{const m=await import('./screens/profile.js');return m.profile(ctx)});
-      register('shop',async()=>{await dataReady;const m=await import('./screens/shop.js');return m.shop(ctx)});
-      register('settings',async()=>{const m=await import('./screens/settings.js');return m.settings(ctx)});
-      register('library',async()=>{await dataReady;const m=await import('./screens/cardsLibrary.js');return m.cardsLibrary(ctx)});
-      register('spy',async()=>{await dataReady;const m=await import('./screens/spy.js');return m.spy(ctx)});
-      register('five',async()=>{await dataReady;const m=await import('./screens/fiveSeconds.js');return m.fiveSeconds(ctx)});
-      register('miniPicker',async()=>{await dataReady;const m=await import('./screens/miniGamePicker.js');return m.miniGamePicker(ctx)});
-      register('miniGame',async payload=>{await dataReady;const m=await import('./screens/miniGame.js');return m.miniGame(ctx,payload)});
-      register('roundSummary',async payload=>{const m=await import('./screens/roundSummary.js');return m.roundSummary(ctx,payload)});
-      register('victory',async()=>{const m=await import('./screens/victory.js');return m.victory(ctx)});
-      register('daily',async()=>{const m=await import('./screens/daily.js');return m.daily(ctx)});
-
-      document.addEventListener('easy-party-route',event=>safeNavigate(go,event.detail));
-      updateHud();
-      dataReady=loadDataInBackground(state);
-      await go('home');
-
-      if('serviceWorker' in navigator){
-        navigator.serviceWorker.register('./sw-v7.js',{updateViaCache:'none'}).then(reg=>reg.update()).catch(error=>console.warn('Service worker unavailable',error));
-      }
-
-      const pending=window.__easyPartyRoute;
-      if(pending&&pending!=='home'){
-        delete window.__easyPartyRoute;
-        safeNavigate(go,pending);
-      }
-      return ctx;
-    }catch(error){
-      showBootError(error);
-      throw error;
-    }
-  })();
-  return bootPromise;
-}
-
-renderInstantHome();
-startGame().catch(()=>{});
+ if(bootPromise)return bootPromise;
+ bootPromise=(async()=>{try{
+  const [stateMod,routerMod,audioMod,hapticsMod]=await Promise.all([import('./core/state.js'),import('./core/router.js'),import('./core/audio.js'),import('./core/haptics.js')]);
+  const {state,initState,persist}=stateMod;const {register,go,onNavigate}=routerMod;router.go=go;const {sfx}=audioMod;const {haptics}=hapticsMod;const ctx={root:app,state,sfx,haptics};
+  initState();state.data.settings=Object.assign({sound:true,music:true,vibrate:true,highContrast:false,largeText:false},state.data.settings||{});
+  const updateHud=()=>{if(!hud)return;const p=state.players?.[0];hud.innerHTML=p?`<div class="topbar"><div class="wallet"><span class="pill">🪙 ${p.coins}</span><span class="pill">💎 ${p.gems}</span><span class="pill">⭐ ${p.level}</span></div><div class="row"><button class="icon-btn" id="hud-sound">${state.data.settings.sound?'🔊':'🔇'}</button><button class="icon-btn" id="hud-settings">⚙️</button></div></div>`:'';hud.querySelector('#hud-settings')?.addEventListener('click',()=>goSafe('settings'));hud.querySelector('#hud-sound')?.addEventListener('click',()=>{state.data.settings.sound=!state.data.settings.sound;persist();updateHud()})};
+  onNavigate(updateHud);
+  register('home',async()=>{const m=await import('./screens/home.js');return m.home(ctx)});register('lobby',async p=>{await dataReady;const m=await import('./screens/lobby.js');return m.lobby(ctx,p||{})});register('profile',async()=>{const m=await import('./screens/profile.js');return m.profile(ctx)});register('shop',async()=>{await dataReady;const m=await import('./screens/shop.js');return m.shop(ctx)});register('settings',async()=>{const m=await import('./screens/settings.js');return m.settings(ctx)});register('library',async()=>{await dataReady;const m=await import('./screens/cardsLibrary.js');return m.cardsLibrary(ctx)});register('spy',async()=>{await dataReady;const m=await import('./screens/spy.js');return m.spy(ctx)});register('five',async()=>{await dataReady;const m=await import('./screens/fiveSeconds.js');return m.fiveSeconds(ctx)});register('miniPicker',async()=>{await dataReady;const m=await import('./screens/miniGamePicker.js');return m.miniGamePicker(ctx)});register('miniGame',async p=>{await dataReady;const m=await import('./screens/miniGame.js');return m.miniGame(ctx,p||{})});register('roundSummary',async p=>{const m=await import('./screens/roundSummary.js');return m.roundSummary(ctx,p||{})});register('victory',async()=>{const m=await import('./screens/victory.js');return m.victory(ctx)});register('daily',async()=>{const m=await import('./screens/daily.js');return m.daily(ctx)});
+  if(!window.__easyPartyRouteListener){window.__easyPartyRouteListener=true;document.addEventListener('easy-party-route',e=>goSafe(e.detail))}
+  dataReady=loadDataInBackground(state);await go('home');
+  try{if('serviceWorker' in navigator){const reg=await navigator.serviceWorker.register('./sw-v8.js',{updateViaCache:'none'});await reg.update()}}catch(e){console.warn('Service worker unavailable',e)}
+  const pending=window.__easyPartyRoute;if(pending&&pending!=='home'){delete window.__easyPartyRoute;await go(pending)}return ctx;
+ }catch(e){showError('تعذر تشغيل اللعبة','حدث خطأ أثناء تجهيز Easy Party.');throw e}})();return bootPromise}
+async function loadDataInBackground(state){const get=async path=>{try{const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw new Error(r.status);return await r.json()}catch(e){console.warn('Data load failed',path,e);return null}};const [words,questions,shop,achievements]=await Promise.all([get('./data/words.json?v=8'),get('./data/fiveSecQuestions.json?v=8'),get('./data/shopItems.json?v=8'),get('./data/achievements.json?v=8')]);if(words)state.assets.words=words;if(questions)state.assets.questions=questions;if(shop)state.assets.shop=shop;if(achievements)state.assets.achievements=achievements}
+renderHomeShell();startGame().catch(()=>{});
