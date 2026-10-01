@@ -1,1 +1,1 @@
-export const vibrate=(ms=20)=>{try{navigator.vibrate?.(ms)}catch{}}
+export function vibrate(ms=20){try{if(navigator.vibrate)navigator.vibrate(ms)}catch{}}export const haptics={tap:()=>vibrate(10),success:()=>vibrate([20,30,20]),error:()=>vibrate([50,40,50])};
