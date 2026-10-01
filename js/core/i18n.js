@@ -1,0 +1,1 @@
+export const ar={play:"بدء اللعب الجماعي",battle:"ابدأ المعركة",home:"الرئيسية",profile:"الملف الشخصي",shop:"المتجر",settings:"الإعدادات",back:"رجوع",next:"التالي",ready:"جاهز",round:"الجولة",coins:"عملات",gems:"جواهر",level:"المستوى",wins:"فوز",matches:"مباريات",daily:"المكافأة اليومية",spy:"الجاسوس",five:"5 ثواني",mini:"لعبة مصغرة"};export const t=k=>ar[k]??k

@@ -1,0 +1,1 @@
+export const vibrate=(ms=20)=>{try{navigator.vibrate?.(ms)}catch{}}

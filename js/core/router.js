@@ -1,0 +1,1 @@
+const routes=new Map();export function register(name,fn){routes.set(name,fn)}export async function go(name,ctx={}){const app=document.querySelector("#app");app.innerHTML="";const fn=routes.get(name);if(!fn)throw Error("Unknown route "+name);await fn(app,ctx)}
