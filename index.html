@@ -1,2 +1,50 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0B0F19"><meta name="description" content="Easy Party — ألعاب جماعية سريعة على جهاز واحد"><link rel="manifest" href="./manifest.json"><link rel="icon" href="./assets/icons/icon-192.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="./css/theme.css"><link rel="stylesheet" href="./css/components.css"><link rel="stylesheet" href="./css/screens.css"><title>Easy Party</title></head><body><div id="hud"></div><main id="app"><div class="boot"><div class="logo">EASY <span>PARTY</span></div><div id="boot-status">جاري تشغيل اللعبة…</div></div></main><script type="module" src="./js/main.js?v=4"></script><script>setTimeout(()=>{const s=document.querySelector('#boot-status');if(s&&s.textContent.includes('جاري'))s.textContent='ما زال التشغيل بطيئاً… اضغط إعادة التحميل';},7000);</script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0B0F19">
+<meta name="description" content="Easy Party — ألعاب حفلات سريعة وممتعة">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./assets/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/theme.css">
+<link rel="stylesheet" href="./css/components.css">
+<link rel="stylesheet" href="./css/screens.css">
+<title>Easy Party</title>
+</head>
+<body>
+<div id="hud"></div>
+<main id="app">
+<section class="screen fade-in">
+  <div class="hero">
+    <div class="logo">EASY <span>PARTY</span></div>
+    <p class="subtitle">ألعاب حفلات سريعة وممتعة</p>
+  </div>
+  <div class="home-actions">
+    <button class="btn primary big-btn" id="quick-start">🎮 بدء اللعب الجماعي</button>
+    <div class="mini-actions">
+      <button class="btn" id="quick-profile">👤 الملف الشخصي</button>
+      <button class="btn" id="quick-shop">🛍️ المتجر</button>
+      <button class="btn" id="quick-daily">🎁 المكافأة اليومية</button>
+      <button class="btn" id="quick-settings">⚙️ الإعدادات</button>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+(function(){
+  function go(name){ window.__easyPartyRoute=name; document.dispatchEvent(new CustomEvent('easy-party-route',{detail:name})); }
+  document.getElementById('quick-start').onclick=function(){go('lobby')};
+  document.getElementById('quick-profile').onclick=function(){go('profile')};
+  document.getElementById('quick-shop').onclick=function(){go('shop')};
+  document.getElementById('quick-daily').onclick=function(){go('daily')};
+  document.getElementById('quick-settings').onclick=function(){go('settings')};
+  window.addEventListener('error',function(e){console.error('Easy Party startup error',e.error||e.message)});
+})();
+</script>
+<script type="module" src="./js/main.js?v=5"></script>
+</body>
+</html>

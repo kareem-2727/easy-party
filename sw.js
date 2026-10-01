@@ -1,59 +1,13 @@
-const CACHE="easy-party-v4";
-const APP_SHELL=["./","./index.html","./manifest.json","./css/theme.css","./css/components.css","./css/screens.css","./js/main.js"];
-
-self.addEventListener("install",event=>{
-  event.waitUntil((async()=>{
-    const cache=await caches.open(CACHE);
-    await Promise.all(APP_SHELL.map(async url=>{try{await cache.add(url)}catch{}}));
-    await self.skipWaiting();
-  })());
-});
-
-self.addEventListener("activate",event=>{
-  event.waitUntil((async()=>{
-    const keys=await caches.keys();
-    await Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key)));
-    await self.clients.claim();
-  })());
-});
-
-async function networkFirst(request){
-  const cache=await caches.open(CACHE);
-  try{
-    const controller=new AbortController();
-    const timer=setTimeout(()=>controller.abort(),4000);
-    const response=await fetch(request,{signal:controller.signal,cache:"no-store"});
-    clearTimeout(timer);
-    if(response.ok)await cache.put(request,response.clone());
-    return response;
-  }catch{
-    const cached=await cache.match(request);
-    if(cached)return cached;
-    throw new Error("Network unavailable");
-  }
-}
-
-async function cacheFirst(request){
-  const cache=await caches.open(CACHE);
-  const cached=await cache.match(request);
-  if(cached)return cached;
-  try{
-    const response=await fetch(request);
-    if(response.ok)await cache.put(request,response.clone());
-    return response;
-  }catch{
-    return Response.error();
-  }
-}
-
-self.addEventListener("fetch",event=>{
-  if(event.request.method!=="GET")return;
-  const url=new URL(event.request.url);
-  if(url.origin!==self.location.origin)return;
-  const pathname=url.pathname.toLowerCase();
-  if(event.request.mode==="navigate"||/\.(js|css|json|html)$/.test(pathname)){
-    event.respondWith(networkFirst(event.request).catch(()=>caches.match("./index.html")));
-  }else{
-    event.respondWith(cacheFirst(event.request));
-  }
+const CACHE='easy-party-v5';
+const SHELL=['./','./index.html','./manifest.json','./css/theme.css','./css/components.css','./css/screens.css'];
+self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL)).then(()=>self.skipWaiting()))});
+self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
+self.addEventListener('fetch',event=>{
+ if(event.request.method!=='GET')return;
+ const url=new URL(event.request.url); if(url.origin!==self.location.origin)return;
+ if(url.pathname.endsWith('.js')||url.pathname.endsWith('.css')||url.pathname.endsWith('.json')){
+   event.respondWith(fetch(event.request,{cache:'no-store'}).then(r=>{if(r.ok){const copy=r.clone();caches.open(CACHE).then(c=>c.put(event.request,copy));}return r}).catch(()=>caches.match(event.request)));
+   return;
+ }
+ event.respondWith(caches.match(event.request).then(c=>c||fetch(event.request)));
 });
